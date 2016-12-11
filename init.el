@@ -3,6 +3,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+(setq package-list '(company company-flx monokai-theme))
 
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -24,7 +25,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-idle-delay 0)
+ '(company-idle-delay 0.5)
  '(custom-safe-themes
    (quote
     ("f81a9aabc6a70441e4a742dfd6d10b2bae1088830dc7aba9c9922f4b1bd2ba50" default)))
