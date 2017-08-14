@@ -3,7 +3,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(setq package-list '(company company-flx monokai-theme haskell-mode rainbow-mode))
+(setq package-list '(company company-flx monokai-theme haskell-mode company-ghc rainbow-mode markdown-mode markdown-preview-mode))
 
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -26,9 +26,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-idle-delay 0.5)
+ '(custom-safe-themes
+   (quote
+    ("3629b62a41f2e5f84006ff14a2247e679745896b5eaa1d5bcfbc904a3441b0cd" default)))
  '(package-selected-packages
    (quote
-    (jsx-mode flx-isearch monokai-theme company-flx org company))))
+    (company-ghc jsx-mode flx-isearch monokai-theme company-flx org company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,22 +40,26 @@
  )
 
 (add-hook 'after-init-hook 'global-company-mode)
+(company-flx-mode 1)
+
+;; Haskell company-mode setup
+(add-hook 'haskell-mode-hook 'ghc-comp-init)
+(add-hook 'company-mode-hook
+	  (lambda () (add-to-list 'company-backends 'company-ghc)))
 
 (load-theme 'monokai)
-(setq linum-format "%d ")
 
+;; set up line numbering
+(setq linum-format "%d ")
 (global-linum-mode 1)
+
 (menu-bar-mode 0)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (show-paren-mode 1)
 (electric-pair-mode 1)
-(company-flx-mode 1)
 
 (global-set-key (kbd "C-c f") 'ff-find-other-file)
 
-;; setup flex search key bindings
-(global-set-key (kbd "C-M-s") 'flx-isearch-forward)
-(global-set-key (kbd "C-M-r") 'flx-isearch-backward)
-
-(require 'ox-md)
+(add-hook 'org-mode-hook
+	  (lambda () (require 'ox-md)))
