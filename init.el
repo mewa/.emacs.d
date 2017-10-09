@@ -3,7 +3,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(setq package-list '(company company-flx monokai-theme haskell-mode company-ghc rainbow-mode markdown-mode markdown-preview-mode))
+(setq package-list '(company company-flx monokai-theme haskell-mode company-ghc rainbow-mode markdown-mode markdown-preview-mode rainbow-delimiters))
 
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -54,12 +54,14 @@
 ;; set up line numbering
 (setq linum-format "%d ")
 (global-linum-mode 1)
-
+(subword-mode 1)
 (menu-bar-mode 0)
 
 (fset 'yes-or-no-p 'y-or-n-p)
+
 (show-paren-mode 1)
 (electric-pair-mode 1)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (global-set-key (kbd "C-c f") 'ff-find-other-file)
 
