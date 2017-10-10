@@ -31,7 +31,7 @@
     ("3629b62a41f2e5f84006ff14a2247e679745896b5eaa1d5bcfbc904a3441b0cd" default)))
  '(package-selected-packages
    (quote
-    (yaml-mode company-ghc jsx-mode flx-isearch monokai-theme company-flx org company))))
+    (elm-mode yaml-mode company-ghc jsx-mode flx-isearch monokai-theme company-flx org company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -48,6 +48,34 @@
 (add-hook 'company-mode-hook
 	  (lambda () (add-to-list 'company-backends 'company-ghc)))
 (setq haskell-process-type 'stack-ghci)
+
+(defun my-elm-oracle-complete (arg)
+  (let* (
+	 (json-object-type 'plist)
+	 (default-directory (elm--find-dependency-file-path))
+	 (file (elm--buffer-local-file-name))
+	 (command (s-join " " (list "elm-oracle" file arg)))
+	 (json (json-read-from-string (shell-command-to-string command)))
+	 (getName (lambda (e) (plist-get e :name)))
+	 )
+    (mapcar getName json)
+   ))
+
+(defun my-comp-elm (command &optional arg &rest ignored)
+  (interactive (list 'interactive))
+
+  (cl-case command
+    (interactive (company-begin-backend 'my-comp-elm))
+    (prefix (when (eq major-mode 'elm-mode) (company-grab-symbol)))
+    (candidates (my-elm-oracle-complete arg))
+    (meta (elm-oracle--completion-signature arg))
+    )
+  )
+
+
+(with-eval-after-load 'company
+  (add-to-list 'company-backends '(company-dabbrev-code :with my-comp-elm)))
+;; (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
 
 (load-theme 'monokai)
 
