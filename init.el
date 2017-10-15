@@ -31,7 +31,8 @@
     ("3629b62a41f2e5f84006ff14a2247e679745896b5eaa1d5bcfbc904a3441b0cd" default)))
  '(package-selected-packages
    (quote
-    (yaml-mode company-ghc jsx-mode flx-isearch monokai-theme company-flx org company))))
+    (slime-company slime yaml-mode company-ghc jsx-mode flx-isearch monokai-theme company-flx org company))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -49,7 +50,14 @@
 	  (lambda () (add-to-list 'company-backends 'company-ghc)))
 (setq haskell-process-type 'stack-ghci)
 
+;; Lisp setup
+(setq inferior-lisp-program "sbcl")
+(setq slime-contribs '(slime-fancy))
+(slime-setup '(slime-fancy slime-company))
+
 (load-theme 'monokai)
+
+(setq-default indent-tabs-mode nil)
 
 ;; set up line numbering
 (setq linum-format "%d ")
