@@ -62,7 +62,7 @@
 ;; set up line numbering
 (setq linum-format "%d ")
 (global-linum-mode 1)
-(subword-mode 1)
+(global-subword-mode 1)
 (menu-bar-mode 0)
 
 (fset 'yes-or-no-p 'y-or-n-p)
