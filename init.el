@@ -8,7 +8,7 @@
 ;; Setup use-package.er
 (package-initialize)
 
-(when  (not (require 'use-package nil 'noerror))
+(when (not (require 'use-package nil 'noerror))
   (package-refresh-contents)
   (package-install 'use-package))
 (require 'use-package)
@@ -79,7 +79,6 @@
 
 ;; Set Monokai theme
 (use-package monokai-theme
-  :ensure t
   :config
   (load-theme 'monokai t))
 
