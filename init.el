@@ -3,16 +3,16 @@
 (setq
  package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                     ("org" . "http://orgmode.org/elpa/")
-                    ("melpa" . "http://melpa.org/packages/")
-                    ("melpa-stable" . "http://stable.melpa.org/packages/"))
- package-archive-priorities '(("melpa-stable" . 1)))
+                    ("melpa" . "http://melpa.org/packages/")))
 
 ;; Setup use-package.er
 (package-initialize)
-(when (not package-archive-contents)
+
+(when  (not (require 'use-package nil 'noerror))
   (package-refresh-contents)
   (package-install 'use-package))
 (require 'use-package)
+(setq use-package-always-ensure t)
 
 ;; Window config
 (use-package switch-window
