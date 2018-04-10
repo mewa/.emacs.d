@@ -84,6 +84,13 @@
   :hook
   (go-mode . (lambda () (mewa/push-company-backend 'company-go))))
 
+;; Ruby setup
+(use-package robe
+  :after (company)
+  :hook
+  ((ruby-mode . robe-mode)
+  (ruby-mode . (lambda () (mewa/push-company-backend 'company-robe)))))
+
 ;; Set Monokai theme
 (use-package monokai-theme
   :config
