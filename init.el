@@ -46,6 +46,13 @@
   :config
   (company-flx-mode t))
 
+;; Scala setup
+(use-package ensime)
+
+(use-package sbt-mode)
+
+(use-package scala-mode)
+
 ;; Haskell setup
 (use-package haskell-mode
   :config
