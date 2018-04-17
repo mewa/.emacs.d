@@ -71,6 +71,13 @@
 (use-package slime-company
   :after (slime))
 
+;; Clojure setup
+(use-package clojure-mode)
+
+(use-package cider
+  :after (clojure-mode company)
+  :hook (clojure-mode . cider-mode))
+
 ;; Elm setup
 (use-package elm-mode
   :hook
