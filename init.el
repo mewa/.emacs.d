@@ -14,6 +14,15 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+;; Visuals
+(use-package molokai-theme
+  :config
+  (load-theme 'molokai t))
+
+(use-package telephone-line
+  :config
+  (telephone-line-mode t))
+
 ;; Window config
 (use-package switch-window
   :config
@@ -97,11 +106,6 @@
   :hook
   ((ruby-mode . robe-mode)
   (ruby-mode . (lambda () (mewa/push-company-backend 'company-robe)))))
-
-;; Set Monokai theme
-(use-package monokai-theme
-  :config
-  (load-theme 'monokai t))
 
 ;; YAML setup
 (use-package yaml-mode)
