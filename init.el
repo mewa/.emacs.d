@@ -34,9 +34,12 @@
   :bind
   (("M-SPC" . 'avy-goto-word-or-subword-1)
    ("M-;" . 'avy-goto-char)
-   ("M-'" . 'avy-goto-char-2)
-   ("M-s" . 'avy-goto-char-timer)
-   ("C-c SPC" . 'avy-goto-line)))
+   ("C-c SPC" . 'avy-goto-char-2)
+   ("C-c C-s" . 'avy-goto-char-timer)
+   ("M-'" . 'avy-goto-line))
+  :config
+  (setq avy-background t)
+  (setq avy-lead-faces '(highlight highlight highlight highlight)))
 
 ;; Ido setup
 (use-package ido
