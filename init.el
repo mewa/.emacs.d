@@ -29,6 +29,15 @@
   (setq switch-window-shortcut-style 'qwerty)
   :bind ("C-x o" . switch-window))
 
+;; Avy setup
+(use-package avy
+  :bind
+  (("M-SPC" . 'avy-goto-word-or-subword-1)
+   ("M-;" . 'avy-goto-char)
+   ("M-'" . 'avy-goto-char-2)
+   ("M-s" . 'avy-goto-char-timer)
+   ("C-c SPC" . 'avy-goto-line)))
+
 ;; Ido setup
 (use-package ido
   :init
