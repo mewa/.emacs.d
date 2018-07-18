@@ -33,7 +33,7 @@
 (use-package avy
   :bind
   (("M-SPC" . 'avy-goto-word-or-subword-1)
-   ("M-;" . 'avy-goto-char)
+   ("C-M-;" . 'avy-goto-char)
    ("C-c SPC" . 'avy-goto-char-2)
    ("C-c C-s" . 'avy-goto-char-timer)
    ("M-'" . 'avy-goto-line))
