@@ -112,6 +112,15 @@
   :hook
   (go-mode . (lambda () (mewa/push-company-backend 'company-go))))
 
+;; JavaScript setup
+(use-package js2-mode
+  :mode ("\\.js$" . js2-mode))
+
+(use-package company-tern
+  :hook
+  (js2-mode . (lambda () (mewa/push-company-backend 'company-tern)))
+  (js2-mode . tern-mode))
+
 ;; Ruby setup
 (use-package robe
   :after (company)
