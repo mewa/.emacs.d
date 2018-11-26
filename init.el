@@ -162,8 +162,20 @@
 ;; Enable subword-mode globally
 (global-subword-mode t)
 
+;; Bindings
+
 ;; Switch between header/implementation
 (global-set-key (kbd "C-c f") 'ff-find-other-file)
+
+
+;; Kill word backward when no region is active,
+;; otherwise kill region
+(global-set-key "\C-w" (lambda (arg)
+                         (interactive "*p")
+                         (message "%s" arg)
+                         (if (use-region-p)
+                             (kill-region (region-beginning) (region-end))
+                           (backward-kill-word arg))))
 
 (provide 'init)
 ;;; init.el ends here
