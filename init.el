@@ -177,5 +177,8 @@
                              (kill-region (region-beginning) (region-end))
                            (backward-kill-word arg))))
 
+;; Enable disabled-by-default functions
+(setq disabled-command-function nil)
+
 (provide 'init)
 ;;; init.el ends here
