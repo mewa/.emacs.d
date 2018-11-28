@@ -29,6 +29,15 @@
   (setq switch-window-shortcut-style 'qwerty)
   :bind ("C-x o" . switch-window))
 
+;; MPC setup
+(use-package mpc
+  :config
+  (setq mpc-browser-tags '(Artist Album|Playlist))
+  :bind (:map mpc-mode-map
+              ("f" . mpc-ffwd)
+              ("b" . mpc-rewind)
+              ("SPC" . mpc-play)))
+
 ;; Avy setup
 (use-package avy
   :bind
