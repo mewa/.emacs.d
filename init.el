@@ -106,7 +106,9 @@
 
 (use-package cider
   :after (clojure-mode company)
-  :hook (clojure-mode . cider-mode))
+  :hook (clojure-mode . cider-mode)
+  :config
+  (setq cider-default-cljs-repl 'figwheel-main))
 
 ;; Elm setup
 (use-package elm-mode
