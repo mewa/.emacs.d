@@ -19,6 +19,11 @@
   :config
   (load-theme 'molokai t))
 
+(use-package magit)
+(use-package git-gutter
+  :config
+  (global-git-gutter-mode t))
+
 (use-package telephone-line
   :config
   (telephone-line-mode t))
