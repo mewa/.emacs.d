@@ -60,6 +60,9 @@
   :init
   (ido-mode t))
 
+;; Helm setup
+(use-package helm)
+
 ;; Rainbow delimiters setup
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
