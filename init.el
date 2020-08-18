@@ -132,12 +132,21 @@
   (js2-mode . (lambda () (mewa/push-company-backend 'company-tern)))
   (js2-mode . tern-mode))
 
+(defun ruby-reload ()
+  (interactive)
+  (progn
+    (let ((buffer-modified-p "*pry*")
+          (kill-buffer-query-functions nil))
+      (kill-buffer "*pry*"))
+    (inf-ruby-console-auto)))
+
 ;; Ruby setup
 (use-package robe
   :after (company)
   :hook
   ((ruby-mode . robe-mode)
-  (ruby-mode . (lambda () (mewa/push-company-backend 'company-robe)))))
+   (ruby-mode . (lambda () (mewa/push-company-backend 'company-robe))))
+  :bind ("C-c M-l" . ruby-reload))
 
 ;; YAML setup
 (use-package yaml-mode)
