@@ -126,10 +126,14 @@
 ;; Go setup
 (use-package go-mode)
 
-(use-package company-go
-  :after (go-mode company)
-  :hook
-  (go-mode . (lambda () (mewa/push-company-backend 'company-go))))
+(use-package lsp-mode
+  :ensure t
+  :commands (lsp lsp-deferred)
+  :hook (go-mode . lsp-deferred))
+
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
 ;; JavaScript setup
 (use-package js2-mode
