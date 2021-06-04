@@ -24,6 +24,8 @@
   :config
   (global-git-gutter-mode t))
 
+(use-package terraform-mode)
+
 (use-package highlight-indent-guides
   :config
   (setq highlight-indent-guides-method 'character)
