@@ -147,6 +147,11 @@
 (use-package js2-mode
   :mode ("\\.js$" . js2-mode))
 
+(use-package vue-mode
+  :config
+  (setq indent-tabs-mode nil js-indent-level 2)
+  (setq css-indent-offset 2))
+
 (use-package company-tern
   :hook
   (js2-mode . (lambda () (mewa/push-company-backend 'company-tern)))
