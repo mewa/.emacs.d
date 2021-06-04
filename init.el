@@ -24,6 +24,12 @@
   :config
   (global-git-gutter-mode t))
 
+(use-package highlight-indent-guides
+  :config
+  (setq highlight-indent-guides-method 'character)
+  (setq highlight-indent-guides-auto-character-face-perc 8)
+  :hook (prog-mode . highlight-indent-guides-mode))
+
 (use-package telephone-line
   :config
   (telephone-line-mode t))
