@@ -48,6 +48,20 @@
   ("C-x 3" . switch-window-then-split-right)
   ("C-x 0" . switch-window-then-delete))
 
+;; Use rofi as buffer switcher when available
+(when (executable-find "rofi")
+  (defun rofi-switch-buffer ()
+    (interactive)
+    (let*
+        ((buffers (mapcar #'buffer-name (buffer-list)))
+         (other (buffer-name (other-buffer)))
+         (buffers (-filter #'(lambda (a) (not (eq a other))) buffers))
+         (buf (shell-command-to-string
+               (concat "echo " "\"" (string-join (cons other buffers) "\n") "\" | rofi -dmenu -i -p \"Buffer\" | tr -d '\n'"))))
+      (switch-to-buffer buf)))
+
+  (global-set-key (kbd "C-x b") 'rofi-switch-buffer))
+
 ;; MPC setup
 (use-package mpc
   :config
