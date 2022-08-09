@@ -40,7 +40,13 @@
 (use-package switch-window
   :config
   (setq switch-window-shortcut-style 'qwerty)
-  :bind ("C-x o" . switch-window))
+  (setq switch-window-qwerty-shortcuts '("a" "r" "s" "t" "n" "e" "i" "o" "g" "m" "f" "u"))
+  :bind
+  ("C-x o" . switch-window)
+  ("C-x 1" . switch-window-then-maximize)
+  ("C-x 2" . switch-window-then-split-below)
+  ("C-x 3" . switch-window-then-split-right)
+  ("C-x 0" . switch-window-then-delete))
 
 ;; MPC setup
 (use-package mpc
