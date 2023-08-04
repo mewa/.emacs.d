@@ -92,6 +92,8 @@
   :config
   (company-flx-mode t))
 
+(use-package elixir-mode)
+
 ;; Scala setup
 (use-package ensime)
 
@@ -137,7 +139,12 @@
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
-  :hook (go-mode . lsp-deferred))
+  :custom
+  (lsp-elixir-ls-version "v0.15.1")
+  (lsp-elixir-ls-download-url "https://github.com/elixir-lsp/elixir-ls/releases/download/v0.15.1/elixir-ls-v0.15.1.zip")
+  :hook
+  (go-mode . lsp-deferred)
+  (elixir-mode . lsp-deferred))
 
 (defun lsp-go-install-save-hooks ()
   (add-hook 'before-save-hook #'lsp-format-buffer t t))
