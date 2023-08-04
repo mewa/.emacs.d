@@ -95,8 +95,6 @@
 (use-package elixir-mode)
 
 ;; Scala setup
-(use-package ensime)
-
 (use-package sbt-mode)
 
 (use-package scala-mode)
