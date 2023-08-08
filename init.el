@@ -199,7 +199,9 @@
   :bind ("C-c M-l" . ruby-reload))
 
 ;; YAML setup
-(use-package yaml-mode)
+(use-package yaml-mode
+  :hook
+  (yaml-mode . lsp-deferred))
 
 ;; Rust setup
 (use-package rust-mode)
