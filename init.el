@@ -27,12 +27,15 @@
       (add-hook 'after-make-frame-functions #'frame-load-theme)
     (load-theme theme t)))
 
+;; Indent highlight setup
 (use-package highlight-indent-guides
+  :hook
+  (prog-mode . highlight-indent-guides-mode)
   :config
   (setq highlight-indent-guides-method 'character)
-  (setq highlight-indent-guides-auto-character-face-perc 8)
-  :hook (prog-mode . highlight-indent-guides-mode))
+  (setq highlight-indent-guides-auto-character-face-perc 10))
 
+;; Telephone line
 (use-package telephone-line
   :config
   (telephone-line-mode t))
