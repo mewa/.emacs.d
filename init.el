@@ -87,6 +87,11 @@
 ;; Helm setup
 (use-package helm)
 
+(use-package smex
+  :bind
+  ("M-x" . 'smex)
+  ("M-X" . 'smex-major-mode-commands))
+
 ;; Rainbow delimiters setup
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
