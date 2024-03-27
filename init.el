@@ -20,7 +20,6 @@
   (load-theme 'molokai t))
 
 
-(use-package terraform-mode)
 
 (use-package highlight-indent-guides
   :config
@@ -220,10 +219,29 @@
    (ruby-mode . (lambda () (mewa/push-company-backend 'company-robe))))
   :bind ("C-c M-l" . ruby-reload))
 
-;; YAML setup
+
+;;; Infra setup
+
+;; Terraform setup
+(use-package terraform-mode)
+
+;; Dockerfile setup
+(use-package dockerfile-mode)
+
+;; Kubernetes + LSP setup
+(defun mewa/enable-kubernetes-yaml ()
+  (interactive)
+  (lsp-yaml-set-buffer-schema "Kubernetes"))
+
 (use-package yaml-mode
+  :custom
+  ('lsp-yaml-schemas '("https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.9/all.json" "*.yaml"))
   :hook
-  (yaml-mode . lsp-deferred))
+  ((yaml-mode . lsp-deferred)
+   (lsp-deferred . mewa/enable-kubernetes-yaml))
+  :bind
+  (:map yaml-mode-map
+        ("C-M-i" . #'company-complete-common)))
 
 ;; Rust setup
 (use-package rust-mode)
