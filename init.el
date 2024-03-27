@@ -19,10 +19,6 @@
   :config
   (load-theme 'molokai t))
 
-(use-package magit)
-(use-package git-gutter
-  :config
-  (global-git-gutter-mode t))
 
 (use-package terraform-mode)
 
@@ -113,6 +109,22 @@
   (company-flx-mode t))
 
 (use-package elixir-mode)
+
+;; git integration
+(use-package diff-hl
+  :init
+  (custom-set-faces
+  '(diff-hl-change ((t (:background "#a18330"))))
+  '(diff-hl-insert ((t (:background "#528e52"))))
+  '(diff-hl-delete ((t (:background "#a03b3b"))))
+  )
+  :custom
+  (diff-hl-margin-symbols-alist '((insert . " ") (delete . " ") (change . " ") (unknown . " ") (ignored . " ")))
+  :config
+  (diff-hl-margin-mode)
+  (global-diff-hl-mode))
+
+(use-package magit)
 
 ;; Scala setup
 (use-package sbt-mode)
