@@ -113,8 +113,6 @@
   :config
   (company-flx-mode t))
 
-(use-package elixir-mode)
-
 ;; git integration
 (use-package diff-hl
   :init
@@ -154,6 +152,17 @@
 (use-package slime-company
   :after (slime))
 
+;; Elixir setup
+
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-language-id-configuration '(elixir-ts-mode . "elixir")))
+
+(use-package elixir-ts-mode
+  :custom
+  (lsp-elixir-ls-version "v0.20.0")
+  (lsp-elixir-ls-download-url "https://github.com/elixir-lsp/elixir-ls/releases/download/v0.20.0/elixir-ls-v0.20.0.zip")
+  :hook (elixir-ts-mode . lsp-deferred))
+
 ;; Clojure setup
 (use-package clojure-mode)
 
@@ -174,12 +183,8 @@
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
-  :custom
-  (lsp-elixir-ls-version "v0.15.1")
-  (lsp-elixir-ls-download-url "https://github.com/elixir-lsp/elixir-ls/releases/download/v0.15.1/elixir-ls-v0.15.1.zip")
   :hook
-  (go-mode . lsp-deferred)
-  (elixir-mode . lsp-deferred))
+  (go-mode . lsp-deferred))
 
 (defun lsp-go-install-save-hooks ()
   (add-hook 'before-save-hook #'lsp-format-buffer t t))
