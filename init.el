@@ -3,7 +3,7 @@
 (setq
  package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                     ("org" . "http://orgmode.org/elpa/")
-                    ("melpa" . "http://melpa.org/packages/")))
+                    ("melpa" . "https://melpa.org/packages/")))
 
 ;; Setup use-package.er
 (package-initialize)
@@ -127,6 +127,8 @@
   (global-diff-hl-mode))
 
 (use-package magit)
+
+;;
 
 ;; Scala setup
 (use-package sbt-mode)
