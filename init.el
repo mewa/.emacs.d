@@ -255,11 +255,8 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Setup line numbering
-(defun linum-format-func (line)
-  (let ((width (length (number-to-string (count-lines (point-min) (point-max))))))
-    (propertize (format (format "%%%dd\u200a" width) line) 'face 'linum)))
-(setq linum-format 'linum-format-func)
-(global-linum-mode 1)
+(global-display-line-numbers-mode t)
+(display-line-numbers-mode t)
 
 ;; Disable menu bar
 (menu-bar-mode 0)
