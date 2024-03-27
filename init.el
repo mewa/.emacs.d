@@ -80,6 +80,7 @@
 ;; Ido setup
 (use-package ido
   :init
+  (setq ido-enable-flex-matching t)
   (ido-mode t))
 
 ;; Helm setup
