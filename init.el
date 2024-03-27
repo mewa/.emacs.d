@@ -15,11 +15,17 @@
 (setq use-package-always-ensure t)
 
 ;; Visuals
-(use-package molokai-theme
+(use-package color-theme-sanityinc-tomorrow
   :config
-  (load-theme 'molokai t))
+  (setq theme 'sanityinc-tomorrow-eighties)
 
+  (defun frame-load-theme (frame)
+    (select-frame frame)
+    (load-theme theme t))
 
+  (if (daemonp)
+      (add-hook 'after-make-frame-functions #'frame-load-theme)
+    (load-theme theme t)))
 
 (use-package highlight-indent-guides
   :config
