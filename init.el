@@ -69,14 +69,13 @@
 ;; Avy setup
 (use-package avy
   :bind
-  (("M-SPC" . 'avy-goto-word-or-subword-1)
-   ("C-M-;" . 'avy-goto-char)
+  (("C-c c" . 'avy-goto-word-or-subword-1)
+   ("M-SPC" . 'avy-goto-char)
    ("C-c SPC" . 'avy-goto-char-2)
    ("C-c C-s" . 'avy-goto-char-timer)
    ("M-'" . 'avy-goto-line))
   :config
-  (setq avy-background t)
-  (setq avy-lead-faces '(highlight highlight highlight highlight)))
+  (setq avy-background t))
 
 ;; Ido setup
 (use-package ido
