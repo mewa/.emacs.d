@@ -149,10 +149,6 @@
   :config
   (interactive-haskell-mode t))
 
-(use-package intero
-  :after (haskell company)
-  :hook (haskell-mode . intero-mode))
-
 ;; Lisp setup
 (use-package slime
   :config
