@@ -205,10 +205,6 @@
   (setq indent-tabs-mode nil js-indent-level 2)
   (setq css-indent-offset 2))
 
-(use-package company-tern
-  :hook
-  (js2-mode . (lambda () (mewa/push-company-backend 'company-tern)))
-  (js2-mode . tern-mode))
 
 (defun ruby-reload ()
   (interactive)
