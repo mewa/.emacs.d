@@ -167,7 +167,14 @@
   :custom
   (lsp-elixir-ls-version "v0.20.0")
   (lsp-elixir-ls-download-url "https://github.com/elixir-lsp/elixir-ls/releases/download/v0.20.0/elixir-ls-v0.20.0.zip")
-  :hook (elixir-ts-mode . lsp-deferred))
+  :hook (elixir-ts-mode . lsp-deferred)
+  :config
+  (cl-letf (
+            ((symbol-function 'y-or-n-p) (lambda (p) t))
+            )
+    (when (not (treesit-language-available-p 'elixir t))
+      (elixir-ts-install-grammar))))
+
 
 ;; Clojure setup
 (use-package clojure-mode)
