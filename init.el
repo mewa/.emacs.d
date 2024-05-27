@@ -139,6 +139,8 @@
 
 ;;
 
+(add-to-list 'auto-mode-alist '("\\.env.*\\'" . conf-mode))
+
 ;; Scala setup
 (use-package sbt-mode)
 
