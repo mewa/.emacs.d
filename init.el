@@ -167,8 +167,8 @@
 
 (use-package elixir-ts-mode
   :custom
-  (lsp-elixir-ls-version "v0.20.0")
-  (lsp-elixir-ls-download-url "https://github.com/elixir-lsp/elixir-ls/releases/download/v0.20.0/elixir-ls-v0.20.0.zip")
+  (lsp-elixir-ls-version "v0.23.0")
+  (lsp-elixir-ls-download-url "https://github.com/elixir-lsp/elixir-ls/releases/download/v0.23.0/elixir-ls-v0.23.0.zip")
   :hook (elixir-ts-mode . lsp-deferred)
   :config
   (cl-letf (
