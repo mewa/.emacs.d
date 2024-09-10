@@ -104,6 +104,15 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package gptel
+  :config
+  (setq
+   gptel-model "deepseek-coder-v2"
+   gptel-backend (gptel-make-ollama "Ollama"
+                   :host "localhost:11434"
+                   :stream t
+                   :models '("deepseek-coder-v2"))))
+
 ;; company-mode setup
 (use-package company
   :custom
