@@ -176,6 +176,10 @@
 
 (add-to-list 'auto-mode-alist '("\\.env.*\\'" . conf-mode))
 
+;; Liquid mode
+(use-package liquid-mode
+  :vc (:url "https://github.com/doitalldev/liquid-mode"))
+
 ;; Scala setup
 (use-package sbt-mode)
 
