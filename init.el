@@ -104,6 +104,8 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+;; AI
+
 (use-package gptel
   :config
   (setq
@@ -112,6 +114,30 @@
                    :host "localhost:11434"
                    :stream t
                    :models '("deepseek-coder-v2"))))
+
+(defun mewa/add-defs-in-region-to-context (start end)
+  "Find definitions for all symbols in region between START and END."
+  (save-excursion
+    (goto-char start)
+    ;; (cl-loop for (file) in gptel-context--alist
+    ;;          collect (gptel-add-file file))
+    (setq gptel-context--alist nil)
+    (while (< (point) end)
+      (when-let* ((symbol (thing-at-point 'symbol))
+                  (bounds (bounds-of-thing-at-point 'symbol))
+                  (locs (lsp-request "textDocument/definition"
+                        (lsp--text-document-position-params))))
+        (when locs
+          (gptel-add-file (lsp--uri-to-path (gethash "uri" locs))))
+        (goto-char (cdr bounds)))
+      (forward-char 1))))
+
+;; For current defun/block:
+(defun add-defs-in-current-block-to-context ()
+  (interactive)
+  (let ((bounds (bounds-of-thing-at-point 'defun)))
+    (when bounds
+      (mewa/add-defs-in-region-to-context (car bounds) (cdr bounds)))))
 
 ;; company-mode setup
 (use-package company
