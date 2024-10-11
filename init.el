@@ -104,7 +104,9 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; AI
+;;;; AI
+
+;;; gptel
 
 (use-package gptel
   :config
@@ -138,6 +140,21 @@
   (let ((bounds (bounds-of-thing-at-point 'defun)))
     (when bounds
       (mewa/add-defs-in-region-to-context (car bounds) (cdr bounds)))))
+
+;; aider
+
+;; Emacs < v30
+(unless (package-installed-p 'vc-use-package)
+  (package-vc-install "https://github.com/slotThe/vc-use-package"))
+(require 'vc-use-package)
+
+(use-package aider-mode
+  :vc (:fetcher  github :repo mewa/aider.el))
+
+;; Emacs >= v30
+;; (use-package aider-mode
+;;   :vc (:url "https://github.com/mewa/aider.el"))
+
 
 ;; company-mode setup
 (use-package company
