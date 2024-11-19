@@ -40,6 +40,11 @@
   :config
   (telephone-line-mode t))
 
+;; Translations
+(use-package po-mode
+  :config
+  (setq po-auto-update-file-header nil))
+
 ;; Window config
 (use-package switch-window
   :config
