@@ -280,6 +280,10 @@
   :config
   (add-hook 'js2-mode-hook 'lsp))
 
+(use-package svelte-mode
+  :config
+  (add-hook 'svelte-mode-hook 'lsp))
+
 (use-package vue-mode
   :config
   (setq indent-tabs-mode nil js-indent-level 2)
