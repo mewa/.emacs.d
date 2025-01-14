@@ -57,6 +57,8 @@
   ("C-x 3" . switch-window-then-split-right)
   ("C-x 0" . switch-window-then-delete))
 
+(setq uniquify-buffer-name-style 'forward)
+
 ;; Use rofi as buffer switcher when available
 (when (executable-find "rofi")
   (defun rofi-switch-buffer ()
