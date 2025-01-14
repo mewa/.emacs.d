@@ -274,13 +274,21 @@
 
 ;; JavaScript setup
 (use-package js2-mode
-  :mode ("\\.js$" . js2-mode))
+  :mode ("\\.js$" . js2-mode)
+  :init
+  (setq js-indent-level 2)
+  :config
+  (add-hook 'js2-mode-hook 'lsp))
 
 (use-package vue-mode
   :config
   (setq indent-tabs-mode nil js-indent-level 2)
   (setq css-indent-offset 2))
 
+(use-package typescript-mode
+  :init
+  (setq typescript-indent-level 2)
+  :config (add-hook 'typescript-mode-hook 'lsp))
 
 (defun ruby-reload ()
   (interactive)
